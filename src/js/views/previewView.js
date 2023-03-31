@@ -7,10 +7,8 @@ class BookmarksView extends View {
   _generateMarkup(bookmark = false) {
     const id = window.location.hash.slice(1);
     return `
-    <li class="preview">
-      <a class="preview__link ${
-        this._data.id === id ? 'preview__link--active' : ''
-      }" href="#${this._data.id}">
+    <li class="preview ${this._data.id === id ? 'preview--active' : ''}">
+      <a class="preview__link" href="#${this._data.id}">
         <figure class="preview__fig">
           <img src="${this._data.image}" alt="${this._data.title}" />
         </figure>

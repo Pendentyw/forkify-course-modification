@@ -1,6 +1,15 @@
 .preview {
   display: flex;
   align-items: center;
+
+  &:hover {
+    background-color: $color-grey-light-1;
+    transform: translateY(-2px);
+  }
+
+  &--active {
+    background-color: $color-grey-light-1;
+  }
   &__link {
     &:link,
     &:visited {
@@ -8,19 +17,9 @@
       align-items: center;
       padding: 1.5rem 3.25rem;
       transition: all 0.3s;
-      border-right: 1px solid #fff;
       text-decoration: none;
       flex-shrink: 1;
       flex-basis: 100%;
-    }
-
-    &:hover {
-      background-color: $color-grey-light-1;
-      transform: translateY(-2px);
-    }
-
-    &--active {
-      background-color: $color-grey-light-1;
     }
   }
 
