@@ -45,7 +45,7 @@ class PaginationView extends View {
     const buttons = pagesArray
       .map(element => {
         return `
-      <button data-goto="${element}" class="btn--inline pagination__btn ${
+      <button data-goto="${element}" class="btn--inline ${element > numPages ? 'hidden' : ''} pagination__btn ${
           element === curPage ? 'active' : ''
         }">
         <span>${element}</span>
