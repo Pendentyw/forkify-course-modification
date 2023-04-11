@@ -62,6 +62,7 @@ const controlPagination = function (goToPage) {
   paginationView.render(model.state.search);
 };
 
+
 const controlServings = function (newServings) {
   model.updateServings(newServings);
 
