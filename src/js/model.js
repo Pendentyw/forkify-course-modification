@@ -7,6 +7,9 @@ export const state = {
     results: [],
     page: 1,
     resultsPerPage: RES_PER_PAGE,
+    sortColumn: null,
+    sortDirection: null,
+    sortDisplay: [],
   },
   bookmarks: [],
 };
@@ -55,6 +58,8 @@ export const loadSearchResults = async function (query) {
         publisher: recipe.publisher,
         sourceUrl: recipe.source_url,
         image: recipe.image_url,
+        cookingTime: recipe.cooking_time,
+        ingredients: recipe.ingredients,
         ...(recipe.key && { key: recipe.key }),
       };
     });
@@ -66,7 +71,6 @@ export const loadSearchResults = async function (query) {
 
 export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
-
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
 

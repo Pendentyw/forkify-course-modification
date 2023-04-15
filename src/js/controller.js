@@ -6,6 +6,7 @@ import resultsView from './views/resultsView';
 import paginationView from './views/paginationView';
 import bookmarksView from './views/bookmarksView';
 import addRecipeView from './views/addRecipeView';
+import sortingButtonView from './views/sortingButtonView';
 import { MODAL_CLOSE_TIME } from './config';
 
 import 'core-js/stable';
@@ -48,6 +49,7 @@ const controlSearchResults = async function () {
 
     await model.loadSearchResults(query);
 
+    sortingButtonView.showSortingBtn();
     resultsView.render(model.getSearchResultsPage());
 
     paginationView.render(model.state.search);
@@ -61,7 +63,6 @@ const controlPagination = function (goToPage) {
 
   paginationView.render(model.state.search);
 };
-
 
 const controlServings = function (newServings) {
   model.updateServings(newServings);
@@ -112,6 +113,10 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlSortingBtn = function () {
+  console.log(`hello`);
+};
+
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   bookmarksView.addHandlerRemoveBookmark(controlDeleteBookmark);
@@ -121,6 +126,7 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  sortingButtonView.addHandlerToOpenDropdown(controlSortingBtn);
 };
 
 init();
