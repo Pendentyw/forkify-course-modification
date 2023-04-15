@@ -69,11 +69,16 @@ export const loadSearchResults = async function (query) {
   }
 };
 
+// const recFoodSort = dogs.sort((dog1, dog2) => dog1.recFood - dog2.recFood);
+
 export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
-
+  const sorted = state.search.results.sort((a, b) =>
+    a.title < b.title ? -1 : 0
+  );
+  state.search.results.reverse();
   return state.search.results.slice(start, end);
 };
 

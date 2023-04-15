@@ -13,6 +13,7 @@ class SortingButtonView extends View {
       }
     });
   }
+
   addHandlerToOpenDropdown(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const dropdownBtn = e.target.closest('.sorting__dropdown-btn');
