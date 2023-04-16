@@ -75,10 +75,12 @@ export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
-  const sorted = state.search.results.sort((a, b) =>
-    a.title < b.title ? -1 : 0
-  );
-  state.search.results.reverse();
+  state.search.results.sort((a, b) => {
+    a.title.toLowerCase();
+    b.title.toLowerCase();
+    return a.title.localeCompare(b.title);
+  });
+  // state.search.results.reverse();
   return state.search.results.slice(start, end);
 };
 

@@ -22,7 +22,7 @@
     background-color: $color-grey-light-1;
     box-shadow: 0rem 0.22rem 2rem $color-grey-light-2;
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 1rem;
     font-size: 1.1rem;
     color: $color-primary;
   }
@@ -32,8 +32,9 @@
     position: absolute;
     margin-top: 4rem;
     width: 15rem;
-    box-shadow: 0rem 0.22rem 2rem $color-grey-light-2;
-    border-radius: 0.2rem;
+    box-shadow: 0rem 0.1rem 2rem $color-grey-light-3,
+      0 0.3rem 3rem $color-grey-light-2;
+    border-radius: 0.6rem;
     background-color: $color-grey-light-1;
     a {
       display: flex;
@@ -42,7 +43,7 @@
       text-decoration: none;
       color: $color-primary;
       &:hover {
-        background-color: white;
+        background-color: $color-grey-light-2;
       }
     }
   }
