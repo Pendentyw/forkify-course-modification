@@ -8,9 +8,10 @@ class SortingButtonView extends View {
   }
   _addHandlerToCloseDropdwonOutside(handler) {
     document.addEventListener('click', function (e) {
-      if (!e.target.matches('.sorting')) {
+      if (!e.target.matches('.dropdown-btn')) {
         document.querySelector('.sorting__dropdown').classList.add('hidden');
       }
+      handler();
     });
   }
 
@@ -22,6 +23,7 @@ class SortingButtonView extends View {
       if (e.target === dropdownBtn) {
         document.querySelector('.sorting__dropdown').classList.toggle('hidden');
       }
+      console.log(e.target);
       e.stopPropagation();
     });
 

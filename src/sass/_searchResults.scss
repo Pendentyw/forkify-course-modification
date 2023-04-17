@@ -20,7 +20,8 @@
     width: 15rem;
     padding: 0.8rem;
     background-color: $color-grey-light-1;
-    box-shadow: 0rem 0.22rem 2rem $color-grey-light-2;
+    box-shadow: 0rem 0.1rem 2rem $color-grey-light-2,
+      0 0.3rem 3rem $color-grey-light-2;
     border: none;
     border-radius: 1rem;
     font-size: 1.1rem;
@@ -36,14 +37,15 @@
       0 0.3rem 3rem $color-grey-light-2;
     border-radius: 0.6rem;
     background-color: $color-grey-light-1;
-    a {
+    button {
       display: flex;
       padding: 0.3rem;
       padding-left: 2rem;
       text-decoration: none;
+      border: none;
       color: $color-primary;
       &:hover {
-        background-color: $color-grey-light-2;
+        background-color: $color-grey-light-1;
       }
     }
   }
