@@ -122,11 +122,11 @@ const controlSorting = function (buttonDataset) {
     return;
   }
   if (buttonDataset === 'name-descending') {
-    model.sortSearchResultsPage(buttonDataset);
+    model.sortSearchResultsPageByName(buttonDataset);
     resultsView.update(model.getSearchResultsPage());
   }
   if (buttonDataset === 'name-ascending') {
-    model.sortSearchResultsPage(buttonDataset);
+    model.sortSearchResultsPageByName(buttonDataset);
     resultsView.update(model.getSearchResultsPage());
   }
 };

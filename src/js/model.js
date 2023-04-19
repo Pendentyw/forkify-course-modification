@@ -51,15 +51,14 @@ export const loadSearchResults = async function (query) {
     state.search.page = 1;
     state.search.query = query;
     const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
-    state.search.results = data.data.recipes.map(recipe => {
+    state.search.results = data.data.recipes.map((recipe, index) => {
       return {
         id: recipe.id,
         title: recipe.title,
         publisher: recipe.publisher,
         sourceUrl: recipe.source_url,
         image: recipe.image_url,
-        cookingTime: recipe.cooking_time,
-        ingredients: recipe.ingredients,
+        defaultIndex: index,
         ...(recipe.key && { key: recipe.key }),
       };
     });
@@ -80,7 +79,7 @@ export const getSearchResultsPage = function (page = state.search.page) {
   return state.search.results.slice(start, end);
 };
 
-export const sortSearchResultsPage = function (buttonDataset) {
+export const sortSearchResultsPageByName = function (buttonDataset) {
   state.search.results.sort((a, b) => {
     a.title.toLowerCase();
     b.title.toLowerCase();
