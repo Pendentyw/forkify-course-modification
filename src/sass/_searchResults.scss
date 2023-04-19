@@ -14,7 +14,7 @@
   justify-content: left;
   margin-left: 3rem;
   padding-bottom: 2rem;
-  z-index: 10000;
+  z-index: 10;
   width: 16rem;
   &__dropdown-btn {
     width: 15rem;
@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
+    z-index: 1;
     margin-top: 4rem;
     width: 15rem;
     box-shadow: 0rem 0.1rem 2rem $color-grey-light-3,

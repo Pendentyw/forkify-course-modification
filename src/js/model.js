@@ -75,13 +75,20 @@ export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
+  // state.search.results.reverse();
+  console.log(state.search.results);
+  return state.search.results.slice(start, end);
+};
+
+export const sortSearchResultsPage = function (buttonDataset) {
   state.search.results.sort((a, b) => {
     a.title.toLowerCase();
     b.title.toLowerCase();
     return a.title.localeCompare(b.title);
   });
-  // state.search.results.reverse();
-  return state.search.results.slice(start, end);
+  if (buttonDataset === 'name-descending') {
+    state.search.results.reverse();
+  }
 };
 
 export const updateServings = function (newServings) {

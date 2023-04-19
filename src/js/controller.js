@@ -114,7 +114,21 @@ const controlAddRecipe = async function (newRecipe) {
 };
 
 const controlSortingBtn = function () {
-  console.log(`hello`);
+  console.log('lol');
+};
+
+const controlSorting = function (buttonDataset) {
+  if (buttonDataset === null) {
+    return;
+  }
+  if (buttonDataset === 'name-descending') {
+    model.sortSearchResultsPage(buttonDataset);
+    resultsView.update(model.getSearchResultsPage());
+  }
+  if (buttonDataset === 'name-ascending') {
+    model.sortSearchResultsPage(buttonDataset);
+    resultsView.update(model.getSearchResultsPage());
+  }
 };
 
 const init = function () {
@@ -127,6 +141,8 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
   sortingButtonView.addHandlerToOpenDropdown(controlSortingBtn);
+  sortingButtonView.addHandlerToDropdownOnDocument(controlSorting);
+  sortingButtonView.addHandlerToCloseDropdownOutside(controlSortingBtn);
 };
 
 init();

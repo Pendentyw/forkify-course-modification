@@ -6,12 +6,19 @@ class SortingButtonView extends View {
   showSortingBtn() {
     document.querySelector('.sorting__dropdown-btn').classList.remove('hidden');
   }
-  _addHandlerToCloseDropdwonOutside(handler) {
+  addHandlerToDropdownOnDocument(handler) {
+    document.addEventListener('click', function (e) {
+      if (e.target.dataset.dataSet === null) return `pizza`;
+      const buttonDataset = e.target.getAttribute('data-set');
+      handler(buttonDataset);
+    });
+  }
+
+  addHandlerToCloseDropdownOutside(handler) {
     document.addEventListener('click', function (e) {
       if (!e.target.matches('.dropdown-btn')) {
         document.querySelector('.sorting__dropdown').classList.add('hidden');
       }
-      handler();
     });
   }
 
@@ -23,12 +30,9 @@ class SortingButtonView extends View {
       if (e.target === dropdownBtn) {
         document.querySelector('.sorting__dropdown').classList.toggle('hidden');
       }
-      console.log(e.target);
       e.stopPropagation();
+      handler();
     });
-
-    this._addHandlerToCloseDropdwonOutside(handler);
-    handler();
   }
 }
 
