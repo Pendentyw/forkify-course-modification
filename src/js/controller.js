@@ -114,13 +114,19 @@ const controlAddRecipe = async function (newRecipe) {
 };
 
 const controlSortingBtn = function () {
-  console.log('lol');
+  console.log(`btn-controlled`);
 };
 
 const controlSorting = function (buttonDataset) {
   if (buttonDataset === null) {
     return;
   }
+
+  if (buttonDataset === 'default') {
+    model.sortSearchResultsPageByDefault(buttonDataset);
+    resultsView.update(model.getSearchResultsPage());
+  }
+
   if (buttonDataset === 'name-descending') {
     model.sortSearchResultsPageByName(buttonDataset);
     resultsView.update(model.getSearchResultsPage());

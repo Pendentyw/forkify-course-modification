@@ -75,7 +75,6 @@ export const getSearchResultsPage = function (page = state.search.page) {
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
   // state.search.results.reverse();
-  console.log(state.search.results);
   return state.search.results.slice(start, end);
 };
 
@@ -88,6 +87,10 @@ export const sortSearchResultsPageByName = function (buttonDataset) {
   if (buttonDataset === 'name-descending') {
     state.search.results.reverse();
   }
+};
+
+export const sortSearchResultsPageByDefault = function () {
+  state.search.results.sort((a, b) => a.defaultIndex - b.defaultIndex);
 };
 
 export const updateServings = function (newServings) {

@@ -35,8 +35,6 @@ class PaginationView extends View {
     if (paginationCenter <= paginationOffset) {
       paginationCenter = paginationOffset + 1;
     }
-
-    console.log(numPages);
     let pagesArray = new Array(pageNumberLimit).fill(0);
     pagesArray = pagesArray.map((_, index) => {
       return paginationCenter - paginationOffset + index;
@@ -45,9 +43,9 @@ class PaginationView extends View {
     const buttons = pagesArray
       .map(element => {
         return `
-      <button data-goto="${element}" class="btn--inline ${element > numPages ? 'hidden' : ''} pagination__btn ${
-          element === curPage ? 'active' : ''
-        }">
+      <button data-goto="${element}" class="btn--inline ${
+          element > numPages ? 'hidden' : ''
+        } pagination__btn ${element === curPage ? 'active' : ''}">
         <span>${element}</span>
       </button>
       `;
