@@ -6,10 +6,27 @@ class SortingButtonView extends View {
   showSortingBtn() {
     document.querySelector('.sorting__dropdown-btn').classList.remove('hidden');
   }
+
   addHandlerToDropdownOnDocument(handler) {
     document.addEventListener('click', function (e) {
-      if (e.target.dataset.dataSet === null) return `pizza`;
+      const sortingBtn = document.querySelector('.sorting__dropdown-btn');
+      if (e.target.getAttribute('data-set') === null) return;
       const buttonDataset = e.target.getAttribute('data-set');
+
+      document.querySelector('.sorting__dropdown').classList.add('hidden');
+
+      if (e.target.getAttribute('data-set') === 'default') {
+        sortingBtn.textContent = 'Default';
+      }
+
+      if (e.target.getAttribute('data-set') === 'name-ascending') {
+        sortingBtn.textContent = 'Name: A-Z';
+      }
+
+      if (e.target.getAttribute('data-set') === 'name-descending') {
+        sortingBtn.textContent = 'Name: Z-A';
+      }
+
       handler(buttonDataset);
     });
   }
