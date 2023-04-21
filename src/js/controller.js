@@ -117,22 +117,17 @@ const controlSortingBtn = function () {
   console.log(`btn-controlled`);
 };
 
-const controlSorting = function (buttonDataset) {
-  if (buttonDataset === null) {
+const controlSorting = function (buttonSortCol, buttonSortDir) {
+  if (buttonSortCol === null && buttonSortDir === null) {
     return;
   }
+  model.setSortingValues(buttonSortDir, buttonSortCol);
 
-  if (buttonDataset === 'default') {
-    model.sortSearchResultsPageByDefault(buttonDataset);
+  if (buttonSortCol === 'default') {
+    model.sortSearchResultsPageByDefault();
     resultsView.update(model.getSearchResultsPage());
-  }
-
-  if (buttonDataset === 'name-descending') {
-    model.sortSearchResultsPageByName(buttonDataset);
-    resultsView.update(model.getSearchResultsPage());
-  }
-  if (buttonDataset === 'name-ascending') {
-    model.sortSearchResultsPageByName(buttonDataset);
+  } else {
+    model.sortSearchResultsPageByName();
     resultsView.update(model.getSearchResultsPage());
   }
 };

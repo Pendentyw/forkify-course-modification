@@ -7,9 +7,11 @@ export const state = {
     results: [],
     page: 1,
     resultsPerPage: RES_PER_PAGE,
-    sortColumn: null,
-    sortDirection: null,
-    sortDisplay: [],
+    sorting: {
+      sortColumn: null,
+      sortDirection: null,
+      sortDisplay: [],
+    },
   },
   bookmarks: [],
 };
@@ -75,22 +77,38 @@ export const getSearchResultsPage = function (page = state.search.page) {
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
   // state.search.results.reverse();
+
+  if (state.search.sorting.sortColumn !== null) {
+    console.log('lmao');
+    return state.search.sorting.sortDisplay.slice(start, end);
+  }
   return state.search.results.slice(start, end);
 };
 
-export const sortSearchResultsPageByName = function (buttonDataset) {
-  state.search.results.sort((a, b) => {
-    a.title.toLowerCase();
-    b.title.toLowerCase();
-    return a.title.localeCompare(b.title);
+export const setSortingValues = function (buttonSortDir, buttonSortCol) {
+  state.search.sorting.sortColumn = buttonSortCol;
+  state.search.sorting.sortDirection = buttonSortDir;
+};
+
+export const sortSearchResultsPageByName = function () {
+  const result = [...state.search.results].sort((a, b) => {
+    a[state.search.sorting.sortColumn].toLowerCase();
+    b[state.search.sorting.sortColumn].toLowerCase();
+    return a[state.search.sorting.sortColumn].localeCompare(
+      b[state.search.sorting.sortColumn]
+    );
   });
-  if (buttonDataset === 'name-descending') {
-    state.search.results.reverse();
+  if (state.search.sorting.sortDirection === 'descending') {
+    result.reverse();
   }
+  console.log(result);
+  state.search.sorting.sortDisplay = result;
 };
 
 export const sortSearchResultsPageByDefault = function () {
-  state.search.results.sort((a, b) => a.defaultIndex - b.defaultIndex);
+  state.search.sorting.sortDisplay.sort(
+    (a, b) => a.defaultIndex - b.defaultIndex
+  );
 };
 
 export const updateServings = function (newServings) {

@@ -10,28 +10,29 @@ class SortingButtonView extends View {
   addHandlerToDropdownOnDocument(handler) {
     document.addEventListener('click', function (e) {
       const sortingBtn = document.querySelector('.sorting__dropdown-btn');
-      if (e.target.getAttribute('data-set') === null) return;
-      const buttonDataset = e.target.getAttribute('data-set');
+      if (
+        e.target.getAttribute('data-sort-col') === null &&
+        e.target.getAttribute('data-sort-dir') === null
+      )
+        return;
+      const buttonSortDir = e.target.getAttribute('data-sort-dir');
+      const buttonSortCol = e.target.getAttribute('data-sort-col');
 
       document.querySelector('.sorting__dropdown').classList.add('hidden');
 
-      if (e.target.getAttribute('data-set') === 'default') {
-        sortingBtn.textContent = 'Default';
+      if (buttonSortCol === 'default') {
+        sortingBtn.textContent = `Default`;
+      } else {
+        sortingBtn.textContent = `${
+          buttonSortCol[0].toUpperCase() + buttonSortCol.slice(1)
+        } : ${buttonSortDir === 'descending' ? 'Z-A' : 'A-Z'}`;
       }
 
-      if (e.target.getAttribute('data-set') === 'name-ascending') {
-        sortingBtn.textContent = 'Name: A-Z';
-      }
-
-      if (e.target.getAttribute('data-set') === 'name-descending') {
-        sortingBtn.textContent = 'Name: Z-A';
-      }
-
-      handler(buttonDataset);
+      handler(buttonSortCol, buttonSortDir);
     });
   }
 
-  addHandlerToCloseDropdownOutside(handler) {
+  addHandlerToCloseDropdownOutside() {
     document.addEventListener('click', function (e) {
       if (!e.target.matches('.dropdown-btn')) {
         document.querySelector('.sorting__dropdown').classList.add('hidden');

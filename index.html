@@ -88,14 +88,40 @@
         <div class="sorting">
           <button class="sorting__dropdown-btn hidden">Default</button>
           <div class="sorting__dropdown hidden">
-            <button class="dropdown-btn" data-set="default" href="#">
+            <button class="dropdown-btn" data-sort-col="default" href="#">
               Default
             </button>
-            <button class="dropdown-btn" data-set="name-ascending" href="#">
-              Name: A-Z
+            <button
+              class="dropdown-btn"
+              data-sort-col="title"
+              data-sort-dir="ascending"
+              href="#"
+            >
+              Title: A-Z
             </button>
-            <button class="dropdown-btn" data-set="name-descending" href="#">
-              Name: Z-A
+            <button
+              class="dropdown-btn"
+              data-sort-col="title"
+              data-sort-dir="descending"
+              href="#"
+            >
+              Title: Z-A
+            </button>
+            <button
+              class="dropdown-btn"
+              data-sort-col="publisher"
+              data-sort-dir="ascending"
+              href="#"
+            >
+              Publisher: A-Z
+            </button>
+            <button
+              class="dropdown-btn"
+              data-sort-col="publisher"
+              data-sort-dir="descending"
+              href="#"
+            >
+              Publisher: Z-A
             </button>
           </div>
         </div>
