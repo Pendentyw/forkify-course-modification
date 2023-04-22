@@ -256,55 +256,132 @@
     </div>
 
     <div class="overlay hidden"></div>
-    <div class="add-recipe-window hidden">
+    <div class="add-recipe-window">
       <button class="btn--close-modal">&times;</button>
       <form class="upload">
-        <div class="upload__column">
-          <h3 class="upload__heading">Recipe data</h3>
+        <h3 class="upload__heading">Recipe data</h3>
+        <div class="upload__column col-2">
           <label>Title</label>
-          <input value="test12212" required name="title" type="text" />
-          <label>URL</label>
-          <input value="test2342" required name="sourceUrl" type="text" />
-          <label>Image URL</label>
-          <input value="test2323" required name="image" type="text" />
           <label>Publisher</label>
+          <input value="test12212" required name="title" type="text" />
           <input value="test23432" required name="publisher" type="text" />
-          <label>Prep time</label>
-          <input value="23" required name="cookingTime" type="number" />
-          <label>Servings</label>
-          <input value="23" required name="servings" type="number" />
         </div>
-
-        <div class="upload__column">
-          <h3 class="upload__heading">Ingredients</h3>
+        <div class="upload__column col-3">
+          <label>Servings</label>
+          <label>Time</label>
+          <label>Image URL</label>
+          <input
+            value="23"
+            class="servings-input"
+            required
+            name="servings"
+            type="number"
+          />
+          <input
+            value="23"
+            class="prep-time-input"
+            required
+            name="cookingTime"
+            type="number"
+          />
+          <input value="test2323" required name="image" type="url" />
+        </div>
+        <div class="upload__column col-1">
+          <label>Source URL</label>
+          <input value="test2342" required name="sourceUrl" type="url" />
+        </div>
+        <div class="upload__underline"></div>
+        <h3 class="upload__heading">Ingredients</h3>
+        <div class="upload__column-ing">
           <label>Ingredient 1</label>
           <input
-            value="0.5,kg,Rice"
+            class="upload__ing-input ing-name-input"
             type="text"
             required
             name="ingredient-1"
-            placeholder="Format: 'Quantity,Unit,Description'"
+            placeholder="Ingredient name"
           />
+          <input
+            type="number"
+            placeholder="Amount"
+            class="upload__ing-input quantity-input"
+          />
+          <select name="unit" class="unit-select" id="unit">
+            <option value="kg">kg</option>
+            <option value="gr">gr</option>
+            <option value="mg">mg</option>
+            <option value="tbsp">tbsp</option>
+            <option value="tsp">tsp</option>
+            <option value="cup">cup</option>
+            <option value="cup">pinch</option>
+          </select>
+
           <label>Ingredient 2</label>
           <input
-            value="1,,Avocado"
+            class="upload__ing-input ing-name-input"
             type="text"
             name="ingredient-2"
-            placeholder="Format: 'Quantity,Unit,Description'"
+            placeholder="Ingredient name"
           />
+          <input
+            type="number"
+            placeholder="Amount"
+            class="upload__ing-input quantity-input"
+          />
+          <select name="unit" class="unit-select" id="unit">
+            <option value="kg">kg</option>
+            <option value="gr">gr</option>
+            <option value="mg">mg</option>
+            <option value="tbsp">tbsp</option>
+            <option value="tsp">tsp</option>
+            <option value="cup">cup</option>
+            <option value="cup">pinch</option>
+          </select>
           <label>Ingredient 3</label>
           <input
-            value=",,salt"
+            class="upload__ing-input ing-name-input"
             type="text"
             name="ingredient-3"
-            placeholder="Format: 'Quantity,Unit,Description'"
+            placeholder="Ingredient name"
           />
+          <input
+            type="number"
+            placeholder="Amount"
+            class="upload__ing-input quantity-input"
+          />
+          <select name="unit" class="unit-select" id="unit">
+            <option value="kg">kg</option>
+            <option value="gr">gr</option>
+            <option value="mg">mg</option>
+            <option value="tbsp">tbsp</option>
+            <option value="tsp">tsp</option>
+            <option value="cup">cup</option>
+            <option value="cup">pinch</option>
+          </select>
+
           <label>Ingredient 4</label>
           <input
+            class="upload__ing-input ing-name-input"
             type="text"
             name="ingredient-4"
-            placeholder="Format: 'Quantity,Unit,Description'"
+            placeholder="Ingredient name"
           />
+          <input
+            type="number"
+            placeholder="Amount"
+            class="upload__ing-input quantity-input"
+          />
+          <select name="unit" class="unit-select" id="unit">
+            <option value="kg">kg</option>
+            <option value="gr">gr</option>
+            <option value="mg">mg</option>
+            <option value="tbsp">tbsp</option>
+            <option value="tsp">tsp</option>
+            <option value="cup">cup</option>
+            <option value="cup">pinch</option>
+          </select>
+        </div>
+        <!-- <div class="upload__column">
           <label>Ingredient 5</label>
           <input
             type="text"
@@ -317,7 +394,19 @@
             name="ingredient-6"
             placeholder="Format: 'Quantity,Unit,Description'"
           />
-        </div>
+          <label>Ingredient 5</label>
+          <input
+            type="text"
+            name="ingredient-7"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 6</label>
+          <input
+            type="text"
+            name="ingredient-8"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+        </div> -->
 
         <button class="btn upload__btn">
           <svg>
