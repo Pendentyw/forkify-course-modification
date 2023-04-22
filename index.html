@@ -292,10 +292,10 @@
         </div>
         <div class="upload__underline"></div>
         <h3 class="upload__heading">Ingredients</h3>
+        <label>Ingredient 1</label>
         <div class="upload__column-ing">
-          <label>Ingredient 1</label>
           <input
-            class="upload__ing-input ing-name-input"
+            class="ing-name-input"
             type="text"
             required
             name="ingredient-1"
@@ -303,8 +303,9 @@
           />
           <input
             type="number"
+            min="1"
             placeholder="Amount"
-            class="upload__ing-input quantity-input"
+            class="quantity-input"
           />
           <select name="unit" class="unit-select" id="unit">
             <option value="kg">kg</option>
@@ -313,10 +314,37 @@
             <option value="tbsp">tbsp</option>
             <option value="tsp">tsp</option>
             <option value="cup">cup</option>
-            <option value="cup">pinch</option>
+            <option value="piece">piece</option>
+            <option value="pinch">pinch</option>
           </select>
-
-          <label>Ingredient 2</label>
+        </div>
+        <label>Ingredient 2</label>
+        <div class="upload__column-ing">
+          <input
+            class="ing-name-input"
+            type="text"
+            required
+            name="ingredient-1"
+            placeholder="Ingredient name"
+          />
+          <input
+            type="number"
+            min="1"
+            placeholder="Amount"
+            class="quantity-input"
+          />
+          <select name="unit" class="unit-select" id="unit">
+            <option value="kg">kg</option>
+            <option value="gr">gr</option>
+            <option value="mg">mg</option>
+            <option value="tbsp">tbsp</option>
+            <option value="tsp">tsp</option>
+            <option value="cup">cup</option>
+            <option value="piece">piece</option>
+            <option value="pinch">pinch</option>
+          </select>
+        </div>
+        <!-- <label>Ingredient 2</label>
           <input
             class="upload__ing-input ing-name-input"
             type="text"
@@ -380,7 +408,7 @@
             <option value="cup">cup</option>
             <option value="cup">pinch</option>
           </select>
-        </div>
+        </div> -->
         <!-- <div class="upload__column">
           <label>Ingredient 5</label>
           <input

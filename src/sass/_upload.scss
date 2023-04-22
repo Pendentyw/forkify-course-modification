@@ -47,7 +47,7 @@
 .upload {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.5rem;
+  gap: 0.8rem 2rem;
 
   & select,
   input {
@@ -84,12 +84,12 @@
 
   &__column-ing {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.8rem;
 
     .ing-name-input {
-      width: 17rem;
+      width: 26rem;
     }
     .quantity-input {
       text-align: center;
@@ -97,32 +97,14 @@
     }
 
     .unit-input {
-      align-content: center;
       width: 6.4rem;
     }
-
-    & label {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: inherit;
-    }
-  }
-  .col-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .col-1 {
-    grid-template-columns: 1fr;
-  }
-
-  .col-3 {
-    grid-template-columns: 1fr 1fr 5fr;
   }
   &__column {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
 
     & label {
       font-size: 1rem;
@@ -137,11 +119,6 @@
     }
   }
 
-  &__ing-input {
-    justify-self: center;
-    margin: 0.5rem;
-    width: 10rem;
-  }
   &__underline {
     grid-column: 1 / -1;
     margin: 1rem 0rem;
@@ -155,12 +132,25 @@
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    justify-self: center;
+    color: $color-primary;
     grid-column: 1 / -1;
   }
 
   &__btn {
     grid-column: 1 / -1;
     justify-self: center;
+    margin-top: 3.14rem;
   }
+}
+
+.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.col-1 {
+  grid-template-columns: 1fr;
+}
+
+.col-3 {
+  grid-template-columns: 1fr 1fr 5fr;
 }
