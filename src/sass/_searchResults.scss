@@ -12,27 +12,29 @@
 .sorting {
   display: flex;
   justify-content: left;
+  align-items: center;
   margin-left: 3rem;
   padding-bottom: 2rem;
   z-index: 10;
-  width: 16rem;
   &__dropdown-btn {
     width: 15rem;
     padding: 0.8rem;
     background-color: $color-grey-light-1;
     box-shadow: 0rem 0.1rem 2rem $color-grey-light-2,
-      0 0.3rem 3rem $color-grey-light-2;
+      0 0.3rem 3rem $color-grey-light-3;
     border: none;
     border-radius: 1rem;
     font-size: 1.1rem;
     color: $color-primary;
   }
+
   &__dropdown {
     display: flex;
     flex-direction: column;
     position: absolute;
     z-index: 1;
-    margin-top: 4rem;
+    margin-top: 15rem;
+    margin-left: 0rem;
     width: 15rem;
     box-shadow: 0rem 0.1rem 2rem $color-grey-light-3,
       0 0.3rem 3rem $color-grey-light-2;
