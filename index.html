@@ -256,7 +256,7 @@
     </div>
 
     <div class="overlay hidden"></div>
-    <div class="add-recipe-window">
+    <div class="add-recipe-window hidden">
       <button class="btn--close-modal">&times;</button>
       <form class="upload">
         <h3 class="upload__heading">Recipe data</h3>
@@ -311,12 +311,13 @@
             type="text"
             required
             data-ingredient-index="0"
-            name="ingredient-1"
+            name="description"
             placeholder="Ingredient name"
           />
           <input
             type="number"
             min="1"
+            name="quantity"
             placeholder="Amount"
             class="quantity-input"
           />

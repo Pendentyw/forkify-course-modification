@@ -129,6 +129,13 @@ export const uploadRecipe = async function (newRecipe) {
         return { quantity: quantity ? +quantity : null, unit, description };
       });
 
+    // const ingredients = new Array(
+    //   newRecipe.description,
+    //   newRecipe.unit,
+    //   newRecipe.quantity
+    // );
+    // console.log(object);
+
     const recipe = {
       title: newRecipe.title,
       source_url: newRecipe.sourceUrl,
@@ -138,6 +145,7 @@ export const uploadRecipe = async function (newRecipe) {
       servings: +newRecipe.servings,
       ingredients,
     };
+    console.log(recipe);
     const data = await AJAX(
       `${API_URL}?search=${recipe.title}&key=${KEY}`,
       recipe

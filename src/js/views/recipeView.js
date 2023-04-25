@@ -32,6 +32,7 @@ class RecipeView extends View {
     });
   }
   _generateMarkup() {
+    console.log(this._data);
     return `
     <figure class="recipe__fig">
           <img src="${this._data.image}" alt="Tomato" class="recipe__img" />
@@ -126,9 +127,7 @@ class RecipeView extends View {
         <svg class="recipe__icon">
           <use href="${icons}#icon-check"></use>
         </svg>
-        <div class="recipe__quantity">${
-          ing.quantity ? ing.quantity : ''
-        }</div>
+        <div class="recipe__quantity">${ing.quantity ? ing.quantity : ''}</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
           ${ing.description}
