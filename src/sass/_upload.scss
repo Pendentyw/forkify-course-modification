@@ -75,7 +75,7 @@
 
   &__column-ing {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     gap: 0.8rem;
 
@@ -89,6 +89,17 @@
     .unit-input {
       font-size: 1rem;
       width: 7rem;
+    }
+
+    & svg {
+      fill: $color-primary;
+      width: 1.5rem;
+      height: 1.5rem;
+      transition: transform 0.14s;
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-7%);
+      }
     }
   }
   &__column {

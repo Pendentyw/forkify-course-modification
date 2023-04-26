@@ -305,7 +305,7 @@
         <div class="upload__underline"></div>
         <h3 class="upload__heading">Ingredients</h3>
         <label data-ingredient-index="0">Ingredient 1</label>
-        <div class="upload__column-ing">
+        <div class="upload__column-ing" data-ingredient-col-index="0">
           <input
             class="ing-name-input"
             type="text"
@@ -315,6 +315,7 @@
             placeholder="Ingredient name"
           />
           <input
+            value="1"
             type="number"
             min="1"
             name="ingredient-0-quantity"
@@ -327,33 +328,15 @@
             name="ingredient-0-unit"
             data-ingredient-index="0"
             class="unit-input"
+            placeholder="unit"
             id="unit"
           />
-        </div>
-        <div class="upload__column-ing">
-          <input
-            class="ing-name-input"
-            type="text"
-            required
-            data-ingredient-index="1"
-            name="ingredient-1-description"
-            placeholder="Ingredient name"
-          />
-          <input
-            type="number"
-            min="1"
-            name="ingredient-1-quantity"
-            data-ingredient-index="1"
-            placeholder="Amount"
-            class="quantity-input"
-          />
-          <input
-            type="text"
-            name="ingredient-1-unit"
-            data-ingredient-index="1"
-            class="unit-input"
-            id="unit"
-          />
+          <svg>
+            <use href="src/img/icons.svg#icon-minus-circle"></use>
+          </svg>
+          <svg>
+            <use href="src/img/icons.svg#icon-plus-circle"></use>
+          </svg>
         </div>
         <!-- <label>Ingredient 2</label>
           <input
