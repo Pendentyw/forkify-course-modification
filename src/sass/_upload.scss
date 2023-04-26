@@ -49,8 +49,10 @@
   grid-template-columns: 1fr;
   gap: 0.8rem 2rem;
 
-  & select,
-  input {
+  & input {
+    height: 2.6rem;
+    padding: 0.3rem 1rem;
+    transition: all 0.2s;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 0.5rem;
@@ -59,17 +61,6 @@
       border: 1px solid $color-primary;
       background-color: $color-grey-light-1;
     }
-  }
-
-  & select {
-    font-size: 1rem;
-    padding: 0.65rem 1rem;
-    text-align: center;
-  }
-  & input {
-    height: 2.6rem;
-    padding: 0.3rem 1rem;
-    transition: all 0.2s;
 
     &.servings-input {
       width: 6rem;
@@ -92,12 +83,12 @@
       width: 26rem;
     }
     .quantity-input {
-      text-align: center;
-      width: 7.5rem;
+      width: 7rem;
     }
 
     .unit-input {
-      width: 6.4rem;
+      font-size: 1rem;
+      width: 7rem;
     }
   }
   &__column {

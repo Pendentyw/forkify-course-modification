@@ -255,8 +255,8 @@
       </div>
     </div>
 
-    <div class="overlay hidden"></div>
-    <div class="add-recipe-window hidden">
+    <div class="overlay"></div>
+    <div class="add-recipe-window">
       <button class="btn--close-modal">&times;</button>
       <form class="upload">
         <h3 class="upload__heading">Recipe data</h3>
@@ -311,26 +311,49 @@
             type="text"
             required
             data-ingredient-index="0"
-            name="description"
+            name="ingredient-0-description"
             placeholder="Ingredient name"
           />
           <input
             type="number"
             min="1"
-            name="quantity"
+            name="ingredient-0-quantity"
+            data-ingredient-index="0"
             placeholder="Amount"
             class="quantity-input"
           />
-          <select name="unit" class="unit-select" id="unit">
-            <option value="kg">kg</option>
-            <option value="gr">gr</option>
-            <option value="mg">mg</option>
-            <option value="tbsp">tbsp</option>
-            <option value="tsp">tsp</option>
-            <option value="cup">cup</option>
-            <option value="piece">piece</option>
-            <option value="pinch">pinch</option>
-          </select>
+          <input
+            type="text"
+            name="ingredient-0-unit"
+            data-ingredient-index="0"
+            class="unit-input"
+            id="unit"
+          />
+        </div>
+        <div class="upload__column-ing">
+          <input
+            class="ing-name-input"
+            type="text"
+            required
+            data-ingredient-index="1"
+            name="ingredient-1-description"
+            placeholder="Ingredient name"
+          />
+          <input
+            type="number"
+            min="1"
+            name="ingredient-1-quantity"
+            data-ingredient-index="1"
+            placeholder="Amount"
+            class="quantity-input"
+          />
+          <input
+            type="text"
+            name="ingredient-1-unit"
+            data-ingredient-index="1"
+            class="unit-input"
+            id="unit"
+          />
         </div>
         <!-- <label>Ingredient 2</label>
           <input

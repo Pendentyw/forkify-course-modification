@@ -1,5 +1,5 @@
 import { API_URL, RES_PER_PAGE, KEY } from './config';
-import { AJAX } from './helpers';
+import { AJAX, chunkArray } from './helpers';
 export const state = {
   recipe: {},
   search: {
@@ -115,26 +115,25 @@ const clearBookmarks = function () {
 
 export const uploadRecipe = async function (newRecipe) {
   try {
-    const ingredients = Object.entries(newRecipe)
-      .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
-      .map(ing => {
-        const ingArr = ing[1].split(',').map(el => el.trim());
-        if (ingArr.length !== 3)
-          throw new Error(
-            'Wrong ingredient format! Please use correct format ;)'
-          );
+    const ingredientsData = [];
+    ingredientsData.push(
+      Object.entries(newRecipe).filter(entry =>
+        entry[0].startsWith('ingredient')
+      )
+    );
 
-        const [quantity, unit, description] = ingArr;
+    const arraySizeOfIngredient = 3;
 
-        return { quantity: quantity ? +quantity : null, unit, description };
-      });
+    const arrayObj = chunkArray(ingredientsData[0], arraySizeOfIngredient);
+    const objs = arrayObj.map(element => Object.fromEntries(element));
 
-    // const ingredients = new Array(
-    //   newRecipe.description,
-    //   newRecipe.unit,
-    //   newRecipe.quantity
-    // );
-    // console.log(object);
+    const ingredients = objs.map((ing, index) => {
+      return {
+        quantity: ing[`ingredient-${index}-quantity`],
+        unit: ing[`ingredient-${index}-unit`],
+        description: ing[`ingredient-${index}-description`],
+      };
+    });
 
     const recipe = {
       title: newRecipe.title,
@@ -145,7 +144,7 @@ export const uploadRecipe = async function (newRecipe) {
       servings: +newRecipe.servings,
       ingredients,
     };
-    console.log(recipe);
+
     const data = await AJAX(
       `${API_URL}?search=${recipe.title}&key=${KEY}`,
       recipe
