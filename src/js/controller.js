@@ -10,6 +10,7 @@ import { MODAL_CLOSE_TIME } from './config';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import addIngredientView from './views/addIngredientView';
 
 // https://forkify-api.herokuapp.com/v2
 
