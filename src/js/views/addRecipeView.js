@@ -33,7 +33,11 @@ class AddRecipeView extends View {
   _addIngredientInputsHandler() {
     this._parentElement
       .querySelector('.upload__column-ing')
-      .addEventListener('click', function (e) {});
+      .addEventListener('click', function (e) {
+        if (e.target.getAttribute('ingredient-control') === 'remove') {
+          console.log(remove);
+        }
+      });
   }
 
   addHandlerUpload(handler) {
