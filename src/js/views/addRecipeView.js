@@ -13,6 +13,7 @@ class AddRecipeView extends View {
     super();
     this._addHandlerShowWindow();
     this._addHandlerHideWindow();
+    this._addIngredientInputsHandler();
   }
 
   toggleWindow() {
@@ -27,6 +28,12 @@ class AddRecipeView extends View {
   _addHandlerHideWindow() {
     this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
     this._overlay.addEventListener('click', this.toggleWindow.bind(this));
+  }
+
+  _addIngredientInputsHandler() {
+    this._parentElement
+      .querySelector('.upload__column-ing')
+      .addEventListener('click', function (e) {});
   }
 
   addHandlerUpload(handler) {
