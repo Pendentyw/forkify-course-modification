@@ -134,6 +134,7 @@ export const uploadRecipe = async function (newRecipe) {
         quantity: ing[`ingredient-${index}-quantity`],
         unit: ing[`ingredient-${index}-unit`],
         description: ing[`ingredient-${index}-description`],
+        ingredientindex: index,
       };
     });
     console.log(ingredients);

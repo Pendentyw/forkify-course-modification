@@ -118,9 +118,10 @@ const controlAddIngredient = function () {
   model.addIngredientsToForm();
   addIngredientView.renderIngredients(model.state.ingredientsForm);
 };
-// const controlRemoveIngredient = function () {
-//   console.log(model.state.ingredientsForm);
-// };
+const controlRemoveIngredient = function () {
+  model.removeIngredientsFromForm();
+  addIngredientView.renderIngredients(model.state.ingredientsForm);
+};
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   bookmarksView.addHandlerRemoveBookmark(controlDeleteBookmark);
@@ -131,6 +132,7 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
   addIngredientView.addIngredientHandler(controlAddIngredient);
+  addIngredientView.removeIngredientHandler(controlRemoveIngredient);
 };
 
 init();
