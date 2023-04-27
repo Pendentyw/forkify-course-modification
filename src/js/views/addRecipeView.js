@@ -49,7 +49,8 @@ class AddRecipeView extends View {
   addHandlerUpload(handler) {
     this._window.addEventListener('submit', function (e) {
       e.preventDefault();
-      const dataArr = [...new FormData(this)];
+      const upload = this.querySelector('.upload');
+      const dataArr = [...new FormData(upload)];
       const data = Object.fromEntries(dataArr);
       console.log(data);
       handler(data);
@@ -84,7 +85,8 @@ class AddRecipeView extends View {
           class="unit-input"
           placeholder="unit"
           id="unit"
-        />
+        /> 
+
         <svg class="remove-ingredient">
           <use href="src/img/icons.svg#icon-minus-circle"></use>
         </svg>
