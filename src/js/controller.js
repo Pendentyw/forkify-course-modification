@@ -115,12 +115,17 @@ const controlAddRecipe = async function (newRecipe) {
 
 const controlAddIngredient = function () {
   // console.log(model.state.ingredientsForm);
-  model.addIngredientsToForm();
-  addIngredientView.renderIngredients(model.state.ingredientsForm);
+  if (model.state.ingredientsForm.length <= 6) {
+    model.addIngredientsToForm();
+    addIngredientView.renderIngredients(model.state.ingredientsForm);
+  }
 };
 const controlRemoveIngredient = function () {
-  model.removeIngredientsFromForm();
-  addIngredientView.renderIngredients(model.state.ingredientsForm);
+  if (model.state.ingredientsForm.length > 1) {
+    model.removeIngredientsFromForm();
+    console.log(model.state.ingredientsForm);
+    addIngredientView.renderIngredients(model.state.ingredientsForm);
+  }
 };
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);

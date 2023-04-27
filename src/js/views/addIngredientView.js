@@ -21,15 +21,21 @@ class addIngredientView extends View {
   // }
   renderIngredients(data) {
     this._data = data;
-    this._parentElement.insertAdjacentHTML('beforeend', this._generateMarkup());
+    this._clear();
+    this._data.forEach((el, index) => {
+      this._parentElement.insertAdjacentHTML(
+        'beforeend',
+        this._generateMarkup(index)
+      );
+    });
   }
 
   removeIngredientHandler(handler) {
     this._form.addEventListener('click', function (e) {
-      const removeIcon = e.target.closest(`remove-ingredient`);
+      const removeIcon = e.target.closest(`.remove-ingredient`);
       if (e.target !== removeIcon) return;
       if (!removeIcon) return;
-      handler(removeIcon.dataset.manage);
+      handler();
     });
   }
 
@@ -38,7 +44,7 @@ class addIngredientView extends View {
       const addIcon = e.target.closest('.add-ingredient');
       if (e.target !== addIcon) return;
       if (!addIcon) return;
-      handler(addIcon.dataset.manage);
+      handler();
     });
     //   // this._parentElement.addEventListener('click', function (e) {
     //   //   const btn = e.target.closest('.btn--remove-bookmark');
@@ -47,11 +53,9 @@ class addIngredientView extends View {
     //   // });
   }
 
-  _generateMarkup() {
+  _generateMarkup(index) {
     return `
-      <label data-ingredient-index="${this._data.length}">Ingredient ${
-      this._data.length + 1
-    }</label>
+      <label data-ingredient-index="${index}">Ingredient ${index + 1}</label>
       <div class="upload__column-ing" data-ingredient-col-index="${
         this._data.length
       }">
@@ -59,23 +63,23 @@ class addIngredientView extends View {
           class="ing-name-input"
           type="text"
           required
-          data-ingredient-index="${this._data.length - 1}"
-          name="ingredient-${this._data.length - 1}-description"
+          data-ingredient-index="${index}"
+          name="ingredient-${index}-description"
           placeholder="Ingredient name"
         />
         <input
           value="1"
           type="number"
           min="1"
-          name="ingredient-${this._data.length - 1}-quantity"
-          data-ingredient-index="${this._data.length - 1}"
+          name="ingredient-${index}-quantity"
+          data-ingredient-index="${index}"
           placeholder="Amount"
           class="quantity-input"
         />
         <input
           type="text"
-          name="ingredient-${this._data.length - 1}-unit"
-          data-ingredient-index="${this._data.length - 1}"
+          name="ingredient-${index}-unit"
+          data-ingredient-index="${index}"
           class="unit-input"
           placeholder="unit"
           id="unit"
