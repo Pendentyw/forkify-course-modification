@@ -2,6 +2,7 @@ import View from './View';
 import addIngredientView from './addIngredientView';
 import icons from 'url:../../img/icons.svg';
 import { render } from 'sass';
+import { _ } from 'core-js';
 
 class AddRecipeView extends View {
   _parentElement = document.querySelector('.upload');
@@ -15,7 +16,7 @@ class AddRecipeView extends View {
     super();
     this._addHandlerShowWindow();
     this._addHandlerHideWindow();
-    this._addIngredientInputsHandler(this._generateMarkup());
+    // this.addIngredientInputsHandler();
   }
 
   toggleWindow() {
@@ -32,70 +33,21 @@ class AddRecipeView extends View {
     this._overlay.addEventListener('click', this.toggleWindow.bind(this));
   }
 
-  _addIngredientInputsHandler(markup) {
-    const uploadColumn = this._parentElement.querySelector(
-      '.ingredients-container'
-    );
-
-    uploadColumn.addEventListener('click', function (e) {
-      if (e.target.matches('.remove-ingredient')) {
-        uploadColumn.insertAdjacentHTML('beforeend', markup);
-      }
-      if (e.target.matches('.add-ingredient')) {
-      }
-    });
-  }
-
   addHandlerUpload(handler) {
     this._window.addEventListener('submit', function (e) {
       e.preventDefault();
       const upload = this.querySelector('.upload');
+      console.log(upload);
       const dataArr = [...new FormData(upload)];
+      console.log(dataArr);
       const data = Object.fromEntries(dataArr);
+
       console.log(data);
       handler(data);
     });
   }
 
-  _generateMarkup() {
-    return `
-      <label data-ingredient-index="0">Ingredient 1</label>
-      <div class="upload__column-ing" data-ingredient-col-index="0">
-        <input
-          class="ing-name-input"
-          type="text"
-          required
-          data-ingredient-index="0"
-          name="ingredient-0-description"
-          placeholder="Ingredient name"
-        />
-        <input
-          value="1"
-          type="number"
-          min="1"
-          name="ingredient-0-quantity"
-          data-ingredient-index="0"
-          placeholder="Amount"
-          class="quantity-input"
-        />
-        <input
-          type="text"
-          name="ingredient-0-unit"
-          data-ingredient-index="0"
-          class="unit-input"
-          placeholder="unit"
-          id="unit"
-        /> 
-
-        <svg class="remove-ingredient">
-          <use href="src/img/icons.svg#icon-minus-circle"></use>
-        </svg>
-        <svg class="add-ingredient">
-          <use href="src/img/icons.svg#icon-plus-circle"></use>
-        </svg>
-      </div>
-      `;
-  }
+  _generateMarkup() {}
 }
 
 export default new AddRecipeView();

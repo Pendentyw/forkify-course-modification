@@ -113,6 +113,14 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlAddIngredient = function () {
+  // console.log(model.state.ingredientsForm);
+  model.addIngredientsToForm();
+  addIngredientView.renderIngredients(model.state.ingredientsForm);
+};
+// const controlRemoveIngredient = function () {
+//   console.log(model.state.ingredientsForm);
+// };
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   bookmarksView.addHandlerRemoveBookmark(controlDeleteBookmark);
@@ -122,6 +130,7 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  addIngredientView.addIngredientHandler(controlAddIngredient);
 };
 
 init();

@@ -2,6 +2,7 @@ import { API_URL, RES_PER_PAGE, KEY } from './config';
 import { AJAX, chunkArray } from './helpers';
 export const state = {
   recipe: {},
+  ingredientsForm: [1],
   search: {
     query: '',
     results: [],
@@ -127,6 +128,7 @@ export const uploadRecipe = async function (newRecipe) {
     const arrayObj = chunkArray(ingredientsData[0], arraySizeOfIngredient);
     const objs = arrayObj.map(element => Object.fromEntries(element));
 
+    console.log(objs);
     const ingredients = objs.map((ing, index) => {
       return {
         quantity: ing[`ingredient-${index}-quantity`],
@@ -134,6 +136,7 @@ export const uploadRecipe = async function (newRecipe) {
         description: ing[`ingredient-${index}-description`],
       };
     });
+    console.log(ingredients);
 
     const recipe = {
       title: newRecipe.title,
@@ -154,4 +157,13 @@ export const uploadRecipe = async function (newRecipe) {
   } catch (err) {
     throw err;
   }
+};
+export const removeIngredientsFromForm = function () {
+  state.ingredientsForm.slice(1);
+};
+
+export const addIngredientsToForm = function () {
+  state.ingredientsForm.push(
+    state.ingredientsForm[state.ingredientsForm.length - 1] + 1
+  );
 };
