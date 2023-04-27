@@ -3,6 +3,7 @@ import icons from 'url:../../img/icons.svg';
 
 class addIngredientView extends View {
   _parentElement = document.querySelector('.ingredients-container');
+  _form = document.querySelector('.upload');
 
   // addHandlerIngredientsForm(handler) {
   //   this._parentElement.addEventListener('click', function (e) {
@@ -18,24 +19,13 @@ class addIngredientView extends View {
   //     }
   //   });
   // }
-  renderIngredients(data, markup = false) {
+  renderIngredients(data) {
     this._data = data;
-    if (markup === false) {
-      this._parentElement.insertAdjacentHTML(
-        'beforeend',
-        this._generateMarkup()
-      );
-    }
-    if (markup === true) {
-      this._parentElement.insertAdjacentHTML(
-        'beforeend',
-        this._generateIconMarkup()
-      );
-    }
+    this._parentElement.insertAdjacentHTML('beforeend', this._generateMarkup());
   }
 
   removeIngredientHandler(handler) {
-    this._parentElement.addEventListener('click', function (e) {
+    this._form.addEventListener('click', function (e) {
       const removeIcon = e.target.closest(`remove-ingredient`);
       if (e.target !== removeIcon) return;
       if (!removeIcon) return;
@@ -44,7 +34,7 @@ class addIngredientView extends View {
   }
 
   addIngredientHandler(handler) {
-    this._parentElement.addEventListener('click', function (e) {
+    this._form.addEventListener('click', function (e) {
       const addIcon = e.target.closest('.add-ingredient');
       if (e.target !== addIcon) return;
       if (!addIcon) return;
@@ -57,7 +47,7 @@ class addIngredientView extends View {
     //   // });
   }
 
-  _generateMarkup(remove = false) {
+  _generateMarkup() {
     return `
       <label data-ingredient-index="${this._data.length}">Ingredient ${
       this._data.length + 1

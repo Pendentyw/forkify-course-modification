@@ -137,6 +137,7 @@ export const uploadRecipe = async function (newRecipe) {
         ingredientindex: index,
       };
     });
+
     console.log(ingredients);
 
     const recipe = {

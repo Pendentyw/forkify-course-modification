@@ -1,7 +1,5 @@
 .add-recipe-window {
   position: fixed;
-  display: flex;
-  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -49,6 +47,26 @@
   grid-template-columns: 1fr;
   gap: 0.8rem 2rem;
 
+  &__ingredient-add-remove-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 0.3rem;
+    svg {
+      margin: 0.3rem;
+      background-color: white;
+      fill: $color-primary;
+      width: 1.5rem;
+      height: 1.5rem;
+      transition: transform 0.14s;
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-7%);
+      }
+    }
+  }
+
   & input {
     height: 2.6rem;
     padding: 0.3rem 1rem;
@@ -90,18 +108,6 @@
       font-size: 1rem;
       width: 7rem;
     }
-
-    & svg {
-      background-color: white;
-      fill: $color-primary;
-      width: 1.5rem;
-      height: 1.5rem;
-      transition: transform 0.14s;
-      &:hover {
-        cursor: pointer;
-        transform: translateY(-7%);
-      }
-    }
   }
   &__column {
     display: grid;
@@ -141,7 +147,7 @@
 
   &__btn {
     justify-self: center;
-    margin-top: 3.1422rem;
+    margin-top: 1.1422rem;
   }
 }
 
