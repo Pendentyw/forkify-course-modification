@@ -54,12 +54,12 @@ class addIngredientView extends View {
   }
 
   _generateMarkup(index) {
+    console.log(this._data);
     return `
       <label data-ingredient-index="${index}">Ingredient ${index + 1}</label>
-      <div class="upload__column-ing" data-ingredient-col-index="${
-        this._data.length
-      }">
+      <div class="upload__column-ing" data-ingredient-col-index="${index}">
         <input
+          value="${this._data[index].description}"
           class="ing-name-input"
           type="text"
           required
@@ -68,7 +68,7 @@ class addIngredientView extends View {
           placeholder="Ingredient name"
         />
         <input
-          value="1"
+        value="${this._data[index].quantity}"
           type="number"
           min="1"
           name="ingredient-${index}-quantity"
@@ -77,6 +77,7 @@ class addIngredientView extends View {
           class="quantity-input"
         />
         <input
+          value="${this._data[index].unit}"
           type="text"
           name="ingredient-${index}-unit"
           data-ingredient-index="${index}"

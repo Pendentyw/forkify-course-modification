@@ -117,6 +117,7 @@ const controlAddIngredient = function () {
   // console.log(model.state.ingredientsForm);
   if (model.state.ingredientsForm.length <= 6) {
     model.addIngredientsToForm();
+    console.log(model.state.ingredientsForm);
     addIngredientView.renderIngredients(model.state.ingredientsForm);
   }
 };
