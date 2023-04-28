@@ -47,6 +47,20 @@ class AddRecipeView extends View {
     });
   }
 
+  addHandlerOnChange(handler) {
+    this._window.addEventListener('change', function (e) {
+      e.preventDefault();
+      const upload = this.querySelector('.upload');
+      console.log(upload);
+      const dataArr = [...new FormData(upload)];
+      console.log(dataArr);
+      const data = Object.fromEntries(dataArr);
+
+      console.log(data);
+      handler(data);
+    });
+  }
+
   _generateMarkup() {}
 }
 

@@ -113,11 +113,17 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlIngredientsValues = function (ingredientsValues) {
+  model.state.ingredientsForm;
+  model.updateIngredientsValue(ingredientsValues);
+};
+
 const controlAddIngredient = function () {
   // console.log(model.state.ingredientsForm);
   if (model.state.ingredientsForm.length <= 6) {
     model.addIngredientsToForm();
     console.log(model.state.ingredientsForm);
+
     addIngredientView.renderIngredients(model.state.ingredientsForm);
   }
 };
@@ -139,6 +145,7 @@ const init = function () {
   addRecipeView.addHandlerUpload(controlAddRecipe);
   addIngredientView.addIngredientHandler(controlAddIngredient);
   addIngredientView.removeIngredientHandler(controlRemoveIngredient);
+  addRecipeView.addHandlerOnChange(controlIngredientsValues);
 };
 
 init();

@@ -130,7 +130,6 @@ export const uploadRecipe = async function (newRecipe) {
       arraySizeOfIngredient
     ).map(element => Object.fromEntries(element));
 
-    console.log(objs);
     const ingredients = groupOfIngrediens.map((ing, index) => {
       return {
         quantity: ing[`ingredient-${index}-quantity`],
@@ -139,8 +138,6 @@ export const uploadRecipe = async function (newRecipe) {
         ingredientindex: index,
       };
     });
-
-    console.log(ingredients);
 
     const recipe = {
       title: newRecipe.title,
@@ -170,4 +167,28 @@ export const addIngredientsToForm = function () {
   state.ingredientsForm.push({ quantity: 1, unit: '', description: '' });
 };
 
-export const updateIngredientsValue = function () {};
+export const updateIngredientsValue = function (newRecipe) {
+  const ingredientsData = [];
+  ingredientsData.push(
+    Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient'))
+  );
+
+  const arraySizeOfIngredient = 3;
+
+  const groupOfIngrediens = chunkArray(
+    ingredientsData[0],
+    arraySizeOfIngredient
+  ).map(element => Object.fromEntries(element));
+
+  const ingredients = groupOfIngrediens.map((ing, index) => {
+    return {
+      quantity: ing[`ingredient-${index}-quantity`],
+      unit: ing[`ingredient-${index}-unit`],
+      description: ing[`ingredient-${index}-description`],
+      ingredientindex: index,
+    };
+  });
+
+  state.ingredientsForm = ingredients;
+  console.log(state.ingredientsForm);
+};
