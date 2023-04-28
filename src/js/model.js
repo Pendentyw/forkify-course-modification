@@ -114,30 +114,33 @@ const clearBookmarks = function () {
 };
 // clearBookmarks();
 
+const ingredientsFormat = function (newRecipe) {
+  const ingredientsData = [];
+  ingredientsData.push(
+    Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient'))
+  );
+
+  const arraySizeOfIngredient = 3;
+
+  const groupOfIngrediens = chunkArray(
+    ingredientsData[0],
+    arraySizeOfIngredient
+  ).map(element => Object.fromEntries(element));
+
+  const ingredients = groupOfIngrediens.map((ing, index) => {
+    return {
+      quantity: ing[`ingredient-${index}-quantity`],
+      unit: ing[`ingredient-${index}-unit`],
+      description: ing[`ingredient-${index}-description`],
+      ingredientindex: index,
+    };
+  });
+  return ingredients;
+};
+
 export const uploadRecipe = async function (newRecipe) {
   try {
-    const ingredientsData = [];
-    ingredientsData.push(
-      Object.entries(newRecipe).filter(entry =>
-        entry[0].startsWith('ingredient')
-      )
-    );
-
-    const arraySizeOfIngredient = 3;
-
-    const groupOfIngrediens = chunkArray(
-      ingredientsData[0],
-      arraySizeOfIngredient
-    ).map(element => Object.fromEntries(element));
-
-    const ingredients = groupOfIngrediens.map((ing, index) => {
-      return {
-        quantity: ing[`ingredient-${index}-quantity`],
-        unit: ing[`ingredient-${index}-unit`],
-        description: ing[`ingredient-${index}-description`],
-        ingredientindex: index,
-      };
-    });
+    const ingredients = ingredientsFormat(newRecipe);
 
     const recipe = {
       title: newRecipe.title,
@@ -167,28 +170,7 @@ export const addIngredientsToForm = function () {
   state.ingredientsForm.push({ quantity: 1, unit: '', description: '' });
 };
 
-export const updateIngredientsValue = function (newRecipe) {
-  const ingredientsData = [];
-  ingredientsData.push(
-    Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient'))
-  );
-
-  const arraySizeOfIngredient = 3;
-
-  const groupOfIngrediens = chunkArray(
-    ingredientsData[0],
-    arraySizeOfIngredient
-  ).map(element => Object.fromEntries(element));
-
-  const ingredients = groupOfIngrediens.map((ing, index) => {
-    return {
-      quantity: ing[`ingredient-${index}-quantity`],
-      unit: ing[`ingredient-${index}-unit`],
-      description: ing[`ingredient-${index}-description`],
-      ingredientindex: index,
-    };
-  });
-
-  state.ingredientsForm = ingredients;
+export const updateIngredientsValue = function (ingredientsData) {
+  state.ingredientsForm = ingredientsFormat(ingredientsData);
   console.log(state.ingredientsForm);
 };
