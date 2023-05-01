@@ -162,8 +162,8 @@ export const uploadRecipe = async function (newRecipe) {
     throw err;
   }
 };
-export const removeIngredientsFromForm = function () {
-  state.ingredientsForm.pop();
+export const removeIngredientsFromForm = function (index) {
+  state.ingredientsForm.splice(index, 1);
 };
 
 export const addIngredientsToForm = function () {

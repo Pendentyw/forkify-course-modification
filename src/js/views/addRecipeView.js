@@ -1,6 +1,4 @@
 import View from './View';
-import addIngredientView from './addIngredientView';
-import icons from 'url:../../img/icons.svg';
 import { render } from 'sass';
 import { _ } from 'core-js';
 
@@ -55,8 +53,6 @@ class AddRecipeView extends View {
       const dataArr = [...new FormData(upload)];
       console.log(dataArr);
       const data = Object.fromEntries(dataArr);
-
-      console.log(data);
       handler(data);
     });
   }

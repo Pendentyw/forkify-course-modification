@@ -96,7 +96,7 @@
 
   &__column-ing {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
     gap: 0.8rem;
     & input {
@@ -104,7 +104,7 @@
     }
 
     .ing-name-input {
-      width: 26rem;
+      width: 24rem;
     }
     .quantity-input {
       width: 7rem;
@@ -113,6 +113,21 @@
     .unit-input {
       font-size: 1rem;
       width: 7rem;
+    }
+
+    svg {
+      background-color: white;
+      fill: $color-primary;
+      width: 2rem;
+      height: 1.5rem;
+      transition: transform 0.1s;
+      cursor: pointer;
+      &.inactive {
+        fill: $color-grey-light-3;
+      }
+      &:hover {
+        transform: translateY(-7%);
+      }
     }
   }
   &__column {

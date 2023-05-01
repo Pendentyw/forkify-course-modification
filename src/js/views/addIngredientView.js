@@ -5,20 +5,6 @@ class addIngredientView extends View {
   _parentElement = document.querySelector('.ingredients-container');
   _form = document.querySelector('.upload');
 
-  // addHandlerIngredientsForm(handler) {
-  //   this._parentElement.addEventListener('click', function (e) {
-  //     if (e.target.matches('.remove-ingredient')) {
-  //       const removeIngBtn = e.target.dataset.manage;
-  //       handler(removeIngBtn);
-  //     }
-
-  //     if (e.target.matches('.add-ingredient')) {
-  //       const addIngBtn = e.target.dataset.manage;
-  //       this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  //       handler(addIngBtn);
-  //     }
-  //   });
-  // }
   renderIngredients(data) {
     this._data = data;
     this._clear();
@@ -32,10 +18,12 @@ class addIngredientView extends View {
 
   removeIngredientHandler(handler) {
     this._form.addEventListener('click', function (e) {
-      const removeIcon = e.target.closest(`.remove-ingredient`);
+      const removeIcon = e.target.closest('.remove-ingredient');
       if (e.target !== removeIcon) return;
       if (!removeIcon) return;
-      handler();
+      const data = removeIcon.dataset.index;
+      console.log(data);
+      handler(data);
     });
   }
 
@@ -46,11 +34,6 @@ class addIngredientView extends View {
       if (!addIcon) return;
       handler();
     });
-    //   // this._parentElement.addEventListener('click', function (e) {
-    //   //   const btn = e.target.closest('.btn--remove-bookmark');
-    //   //   if (!btn) return;
-    //   //   handler(btn.dataset.bookmark);
-    //   // });
   }
 
   _generateMarkup(index) {
@@ -85,21 +68,27 @@ class addIngredientView extends View {
           placeholder="unit"
           id="unit"
         /> 
-      
+            <svg class="remove-ingredient ${
+              index === 0 && this._data.length === index + 1 ? 'inactive' : ''
+            }" data-manage="remove" data-index="${index}">
+            <use href="${icons}#icon-minus-circle"></use>
+          </svg>
+        
+
         
       `;
   }
 
-  _generateIconMarkup(remove = false, add = false) {
-    return `
-    <svg class="remove-ingredient ${remove ? '' : hidden}">
-      <use href="${icons}#icon-minus-circle"></use>
-    </svg>
-    <svg class="add-ingredient ${add ? '' : hidden}">
-      <use href="${icons}#icon-plus-circle"></use>
-    </svg>
-    </div>
-`;
-  }
+  //   _generateIconMarkup(remove = false, add = false) {
+  //     return `
+  //     <svg class="remove-ingredient ${remove ? '' : hidden}">
+  //       <use href="${icons}#icon-minus-circle"></use>
+  //     </svg>
+  //     <svg class="add-ingredient ${add ? '' : hidden}">
+  //       <use href="${icons}#icon-plus-circle"></use>
+  //     </svg>
+  //     </div>
+  // `;
+  //   }
 }
 export default new addIngredientView();

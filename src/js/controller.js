@@ -127,9 +127,9 @@ const controlAddIngredient = function () {
     addIngredientView.renderIngredients(model.state.ingredientsForm);
   }
 };
-const controlRemoveIngredient = function () {
+const controlRemoveIngredient = function (index) {
   if (model.state.ingredientsForm.length > 1) {
-    model.removeIngredientsFromForm();
+    model.removeIngredientsFromForm(index);
     console.log(model.state.ingredientsForm);
     addIngredientView.renderIngredients(model.state.ingredientsForm);
   }
