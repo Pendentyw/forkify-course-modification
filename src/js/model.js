@@ -115,27 +115,41 @@ const clearBookmarks = function () {
 // clearBookmarks();
 
 const ingredientsFormat = function (newRecipe) {
-  const ingredientsData = [];
-  ingredientsData.push(
-    Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient'))
-  );
+  const keys = Object.keys(newRecipe).filter(key => key.includes('ingredient'));
+  const outputArray = [];
 
-  const arraySizeOfIngredient = 3;
+  keys.forEach(key => {
+    const [_, indexAsString, ingredientKey] = key.split('-');
+    const actualIndex = Number(indexAsString);
 
-  const groupOfIngrediens = chunkArray(
-    ingredientsData[0],
-    arraySizeOfIngredient
-  ).map(element => Object.fromEntries(element));
+    if (!outputArray[actualIndex]) {
+      outputArray[actualIndex] = {};
+      outputArray[actualIndex].ingredientIndex = actualIndex;
+    }
 
-  const ingredients = groupOfIngrediens.map((ing, index) => {
-    return {
-      quantity: ing[`ingredient-${index}-quantity`],
-      unit: ing[`ingredient-${index}-unit`],
-      description: ing[`ingredient-${index}-description`],
-      ingredientindex: index,
-    };
+    outputArray[actualIndex][ingredientKey] = newRecipe[key];
   });
-  return ingredients;
+  // const ingredientsData = [];
+  // ingredientsData.push(
+  //   Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient'))
+  // );
+
+  // const ingredientsFieldCount = 3;
+  // console.log(ingredientsData);
+  // const groupOfIngrediens = chunkArray(
+  //   ingredientsData[0],
+  //   ingredientsFieldCount
+  // ).map(element => Object.fromEntries(element));
+
+  // const ingredients = groupOfIngrediens.map((ing, index) => {
+  //   return {
+  //     quantity: ing[`ingredient-${index}-quantity`],
+  //     unit: ing[`ingredient-${index}-unit`],
+  //     description: ing[`ingredient-${index}-description`],
+  //     ingredientindex: index,
+  //   };
+  // });
+  return outputArray;
 };
 
 export const uploadRecipe = async function (newRecipe) {
